@@ -50,6 +50,11 @@
   background: #2F2F2F;
 }
 
+.login__input:focus {
+  border: 1px solid rgb(61, 220, 132, .5);
+  outline: none;
+}
+
 .login__button {
   width: 100%;
   font-size: 14px;

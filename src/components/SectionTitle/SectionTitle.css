@@ -4,13 +4,10 @@
   line-height: 27px;
   font-weight: 400;
   letter-spacing: -0.72px;
-  margin: 0 0 23px;
+  margin: 0;
+  padding-bottom: 23px;
+  border-bottom: 1px solid #DADADA;
   color: #FFFFFF;
-}
-
-.section-title__decoration {
-  height: 1px;
-  background: #DADADA;
 }
 
 @media screen and (max-width: 480px) {

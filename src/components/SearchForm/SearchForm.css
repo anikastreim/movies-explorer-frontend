@@ -26,12 +26,21 @@
 }
 
 .search-form__input {
+  max-width: 1050px;
+  width: 100%;
   font-size: 13px;
   line-height: 18px;
   font-weight: 400;
   padding: 7px 15px;
   border: none;
+  border-radius: 8px;
+  color: #FFFFFF;
   background-color: transparent;
+}
+
+.search-form__input:focus {
+  border: 1px solid rgb(61, 220, 132, .5);
+  outline: none;
 }
 
 .search-form__button {

@@ -13,7 +13,7 @@ function MoviesCardList({isSaved}) {
         ))}
       </ul>
       {!isSaved && (
-        <button type='submit' aria-label='more' className='movies-card-list__button'>
+        <button type='button' aria-label='more' className='movies-card-list__button'>
           Ещё
         </button>
       )}
