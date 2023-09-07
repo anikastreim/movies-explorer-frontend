@@ -12,7 +12,7 @@ function Header({isAuth})  {
         <Navigation />
         :
         <div className='header__auth'> 
-          <Link to='/signup' className='header__signup button'>Регистрация</Link>
+          <Link to='/signup' className='header__signup link'>Регистрация</Link>
           <Link to='/signin' className='header__signin button'>Войти</Link>
         </div>
         }
