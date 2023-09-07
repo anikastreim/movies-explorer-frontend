@@ -1,0 +1,137 @@
+.about-project {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 110px 70px;
+  box-sizing: border-box;
+}
+
+.about-project__container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 40px;
+  padding: 70px 0 110px;
+  color: #FFFFFF;
+}
+
+.about-project__info {
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+}
+
+.about-project__info-title {
+  font-size: 20px;
+  line-height: 24px;
+  font-weight: 400;
+  letter-spacing: -0.8px;
+  margin: 0;
+}
+
+.about-project__info-subtitle {
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 400;
+  margin: 0;
+}
+
+.about-project__time {
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+}
+
+.about-project__time-items {
+  text-align: center;
+}
+
+.about-project__time-period_backend {
+  background: #3DDC84;
+  color: #000000;
+}
+
+.about-project__time-period_frontend {
+  background: #303030;
+  color: #FFFFFF;
+}
+
+.about-project__time-period {
+  font-size: 14px;
+  line-height: 17px;
+  font-weight: 400;
+  margin: 0 0 14px;
+  padding: 9px 0;
+  text-align: center;
+}
+
+.about-project__time-tech {
+  font-size: 14px;
+  line-height: 17px;
+  font-weight: 400;
+  margin: 0;
+  text-align: center;
+  color: #A0A0A0;
+}
+
+@media screen and (max-width: 1279px) {
+  .about-project {
+    padding: 90px 50px;
+  }
+
+  .about-project__container {
+    padding: 70px 0 93px;
+    gap: 30px;
+  }
+
+  .about-project__info {
+    gap: 22px;
+  }
+
+  .about-project__info-subtitle {
+    font-size: 12px;
+    line-height: 18px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .about-project {
+    padding: 70px 18px;
+  }
+
+  .about-project__container {
+    grid-template-columns: 1fr;
+    gap: 57px;
+    padding: 61px 0 60px;
+  }
+
+  .about-project__info {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .about-project__info-title {
+    font-size: 18px;
+    line-height: 22px;
+    letter-spacing: -0.7px;
+  }
+
+  .about-project__info-subtitle {
+    font-size: 11px;
+    line-height: 16px;
+  }
+
+  .about-project__time {
+    grid-template-columns: 1fr 2fr;
+  }
+
+  .about-project__time-period {
+    font-size: 11px;
+    line-height: 13px;
+    margin-bottom: 10px;
+    padding: 12px 0 10px;
+  }
+
+  .about-project__time-tech {
+    font-size: 11px;
+    line-height: 13px;
+  }
+}
