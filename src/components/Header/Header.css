@@ -22,16 +22,14 @@
 }
 
 .header__signin {
-  width: 76px;
-  height: 32px;
   font-size: 12px;
   font-weight: 500;
   line-height: 16px;
   margin-left: 30px;
+  padding: 8px 20px;
   text-decoration: none;
   color: #000000;
   background: #3DDC84;
-  border: none;
   border-radius: 3px;
 }
 
@@ -54,10 +52,9 @@
   }
 
   .header__signin {
-    width: 54px;
-    height: 26px;
     font-size: 10px;
     line-height: 16px;
     margin-left: 14px;
+    padding: 7px 12px;
   }
 }

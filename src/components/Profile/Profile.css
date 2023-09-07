@@ -51,8 +51,14 @@
   font-weight: 400;
   text-align: right;
   border: none;
+  border-radius: 8px;
   background: transparent;
   color: #FFFFFF;
+}
+
+.profile__input:focus {
+  border: 1px solid rgb(61, 220, 132, .5);
+  outline: none;
 }
 
 .profile__buttons {
@@ -73,10 +79,9 @@
 
 .profile__signout {
   margin-top: 16px;
-  border: none;
+  text-decoration: none;
   background: transparent;
   color: #EE3465;
-  cursor: pointer;
 }
 
 @media screen and (max-width: 1279px) {

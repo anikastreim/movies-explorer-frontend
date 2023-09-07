@@ -24,9 +24,9 @@ function Register() {
               <span className='register__error'>Что-то пошло не так...</span>
             </label>
             <div className='register__submit'>
-              <button type='submit' aria-label='sign up' className='register__button'>Зарегистрироваться</button>
+              <button type='submit' aria-label='sign up' className='register__button button'>Зарегистрироваться</button>
               <div className='register__signin'>
-                <p className='register__text'>Уже зарегистрированы? <Link to='/signin' className='register__link'>Войти</Link></p>
+                <p className='register__text'>Уже зарегистрированы? <Link to='/signin' className='register__link link'>Войти</Link></p>
               </div>
             </div>
           </form>

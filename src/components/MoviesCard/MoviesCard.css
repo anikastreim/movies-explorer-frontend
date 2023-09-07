@@ -44,7 +44,6 @@
 }
 
 .movies-card:hover .movies-card__delete{
-  cursor: pointer;
   background-image: url('../../images/delete.svg');
 }
 
@@ -53,10 +52,6 @@
   height: 30px;
   border: none;
   background: transparent url('../../images/like.svg') no-repeat 8px 10px;
-}
-
-.movies-card__save:hover {
-  cursor: pointer;
 }
 
 .movies-card__save_active {

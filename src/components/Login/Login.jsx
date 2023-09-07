@@ -19,9 +19,9 @@ function Login() {
               <input required type='password' name='password' placeholder='Пароль' minLength='6' maxLength='127' className='login__input' />
             </label>
             <div className='login__submit'>
-              <button type='submit' aria-label='sign in' className='login__button'>Войти</button>
+              <button type='submit' aria-label='sign in' className='login__button button'>Войти</button>
               <div className='login__signin'>
-                <p className='login__text'>Ещё не зарегистрированы? <Link to='/signup' className='login__link'>Регистрация</Link></p>
+                <p className='login__text'>Ещё не зарегистрированы? <Link to='/signup' className='login__link link'>Регистрация</Link></p>
               </div>
             </div>
           </form>

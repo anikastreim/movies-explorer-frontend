@@ -15,9 +15,9 @@ function MoviesCard({movie, isSaved}) {
           <h2 className='movies-card__title'>{title}</h2>
           {isSaved
             ?
-            <button type='button' className='movies-card__delete' />
+            <button type='button' aria-label='delete' className='movies-card__delete button' />
             :
-            <button type='button' className='movies-card__save' onClick={handleLikeButtonClick}/>
+            <button type='button' aria-label='save' className='movies-card__save button' onClick={handleLikeButtonClick}/>
           }
         </div>
         <p className='movies-card__duration'>{`${hours}ч ${minutes}м`}</p>

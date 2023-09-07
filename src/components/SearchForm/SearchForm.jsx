@@ -7,7 +7,7 @@ function SearchForm() {
       <form className='search-form__form' name='search'>
         <div className='search-form__container'>
           <input required type='text' name='search' placeholder='Фильм' className='search-form__input' />
-          <button type='submit' aria-label='search' className='search-form__button' />
+          <button type='submit' aria-label='search' className='search-form__button button' />
         </div>
         <FilterCheckbox />
       </form>
