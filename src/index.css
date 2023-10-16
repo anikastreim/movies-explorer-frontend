@@ -24,6 +24,12 @@ code {
   cursor: pointer;
 }
 
+.button:disabled {
+  transition: opacity 0s;
+  opacity: .3;
+  cursor: auto;
+}
+
 .link {
   transition: opacity .3s;
 }

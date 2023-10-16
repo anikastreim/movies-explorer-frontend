@@ -2,7 +2,7 @@ import './NavTab.css';
 
 function NavTab() {
   return (
-    <nav className='nav-tab__nav'>
+    <nav className='nav-tab'>
       <ul className='nav-tab__links'>
         <li>
           <a className='nav-tab__link link' href='#about-project'>О проекте</a>

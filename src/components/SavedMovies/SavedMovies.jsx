@@ -1,19 +1,50 @@
+import { useState, useEffect } from 'react';
 import Header from '../Header/Header';
 import SearchForm from '../SearchForm/SearchForm';
 import MoviesCardList from '../MoviesCardList/MoviesCardList';
 import Footer from '../Footer/Footer';
 
-function SavedMovies() {
+function SavedMovies({ savedMovies, onDeleteMovie, loggedIn }) {
+  const [filteredMovies, setFilteredMovies] = useState([]);
+  const [searchQuery, setSearchQuery] = useState('');
+  const [isShortMovie, setIsShortMovie] = useState(() => {
+    const storedValue = JSON.parse(localStorage.getItem('isShortMovie'));
+    return storedValue !== null ? storedValue : false;
+  });
+
+  useEffect(() => {
+    handleSearchMovies(searchQuery);
+  }, [savedMovies, isShortMovie]);
+
+  function handleSearchMovies(movieSearch) {
+    setSearchQuery(movieSearch);
+    const filteredCardsArray = savedMovies.filter(movie => {
+      return movie.nameEN.toLowerCase().includes(movieSearch.toLowerCase()) || movie.nameRU.toLowerCase().includes(movieSearch.toLowerCase())
+        && (isShortMovie ? movie.duration < 41 : movie.duration > 0);
+    });
+    setFilteredMovies(filteredCardsArray);
+  }
+
+  function handleCheckbox() {
+    setIsShortMovie(isShortMovie => {
+      const newValue = !isShortMovie;
+      localStorage.setItem('isShortMovie', JSON.stringify(newValue));
+      return newValue;
+    });
+  }
+
   return (
     <>
-      <Header isAuth={true} />
+      <Header loggedIn={loggedIn} />
       <main>
-        <SearchForm />
-        <MoviesCardList isSaved={true} />
+        <SearchForm onSubmit={handleSearchMovies} onChange={handleCheckbox} isShortMovie={isShortMovie} />
+        {filteredMovies.length > 0 ? (
+          <MoviesCardList movies={filteredMovies} onDeleteMovie={onDeleteMovie} isShortMovie={isShortMovie} />
+        ) : null}
       </main>
       <Footer />
     </>
   )
-};
+}
 
 export default SavedMovies;

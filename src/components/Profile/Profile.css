@@ -81,7 +81,29 @@
   margin-top: 16px;
   text-decoration: none;
   background: transparent;
+  border: none;
   color: #EE3465;
+}
+
+.profile__message {
+  margin-bottom: 14px;
+  font-size: 14px;
+  line-height: 17px;
+  font-weight: 400;
+  color: #3DDC84;
+}
+
+.profile__save {
+  width: 100%;
+  font-size: 14px;
+  line-height: 17px;
+  font-weight: 500;
+  margin: 0;
+  padding: 14px 25px;
+  border: none;
+  border-radius: 3px;
+  color: #FFFFFF;
+  background: #4285F4;
 }
 
 @media screen and (max-width: 1279px) {
