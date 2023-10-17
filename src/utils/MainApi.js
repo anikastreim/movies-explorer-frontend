@@ -122,5 +122,5 @@ class MainApi {
 }
 
 export const mainApi = new MainApi({
-  baseUrl: 'http://api.bifilms.anikastreim.nomoreparties.co'
+  baseUrl: 'https://api.bifilms.anikastreim.nomoreparties.co'
 });
