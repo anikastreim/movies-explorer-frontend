@@ -35,7 +35,7 @@ function SearchForm({ onSubmit, onChange, isShortMovie, pageType }) {
           <input value={values.search || ''} onChange={handleChange} required type='text' name='search' placeholder='Фильм' className='search-form__input' />
           <button type='submit' aria-label='search' className='search-form__button button' disabled={!isValid} />
         </div>
-        <span className="search-form__error">{errors.search ? 'Введите ключевое слово' : ''}</span>
+        <span className='search-form__error'>{errors.search ? 'Введите ключевое слово' : ''}</span>
         <FilterCheckbox onChange={onChange} value={isShortMovie} />
       </form>
     </section>

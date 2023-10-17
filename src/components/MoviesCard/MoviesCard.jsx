@@ -12,7 +12,7 @@ function MoviesCard({ movie, onSaveMovie, onDeleteMovie }) {
   const convertDuration = () => {
     const minutes = duration % 60;
     const hours = Math.floor(duration / 60);
-    if (hours > 0 && hours > 0) {
+    if (hours > 0) {
       return `${hours}ч ${minutes}м`
     } else if (hours > 0) {
       return `${hours}ч`
@@ -46,10 +46,13 @@ function MoviesCard({ movie, onSaveMovie, onDeleteMovie }) {
 
   function handleDeleteMovie(e) {
     e.preventDefault();
+    const savedMovies = JSON.parse(localStorage.getItem(`savedMovies_${currentUser._id}`)) || [];
+    const updatedSavedMovies = savedMovies.filter((savedMovie) => savedMovie.movieId !== movie.movieId);
+    localStorage.setItem(`savedMovies_${currentUser._id}`, JSON.stringify(updatedSavedMovies));
     onDeleteMovie(movie._id);
     setIsSaved(false);
   }
-
+  
   return (
     <article className='movies-card'>
       <a className='movies-card__link' href={trailerLink} target="_blank" rel="noreferrer">
