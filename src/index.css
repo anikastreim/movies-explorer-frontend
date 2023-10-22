@@ -1,0 +1,41 @@
+@import url(./vendor/normalize.css);
+@import url(./vendor/fonts.css);
+
+body {
+  font-family: 'Inter', 'Arial', sans-serif;
+  background-color: #202020;
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+.button {
+  transition: opacity .3s;
+}
+
+.button:hover {
+  opacity: .8;
+  user-select: none;
+  cursor: pointer;
+}
+
+.button:disabled {
+  transition: opacity 0s;
+  opacity: .3;
+  cursor: auto;
+}
+
+.link {
+  transition: opacity .3s;
+}
+
+.link:hover {
+  opacity: .7;
+  user-select: none;
+  cursor: pointer;
+}

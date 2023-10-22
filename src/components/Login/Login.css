@@ -1,0 +1,133 @@
+.login {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.login__container {
+  max-width: 396px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 70px 0;
+  box-sizing: border-box;
+}
+
+.login__title {
+  font-size: 24px;
+  line-height: 29px;
+  font-weight: 500;
+  margin: 40px 0;
+  padding: 0;
+  color: #FFFFFF;
+}
+
+.login__form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.login__label {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-size: 10px;
+  line-height: 12px;
+  font-weight: 400;
+  cursor: pointer;
+  color: #8B8B8B;
+}
+
+.login__input {
+  font-size: 13px;
+  line-height: 16px;
+  font-weight: 400;
+  padding: 15px;
+  border: none;
+  border-radius: 8px;
+  color: #FFFFFF;
+  background: #2F2F2F;
+}
+
+.login__input:focus {
+  border: 1px solid rgb(61, 220, 132, .5);
+  outline: none;
+}
+
+.login__button {
+  width: 100%;
+  font-size: 14px;
+  line-height: 17px;
+  font-weight: 500;
+  margin: 159px 0 0;
+  padding: 14px 25px;
+  border: none;
+  border-radius: 3px;
+  color: #FFFFFF;
+  background: #4285F4;
+}
+
+.login__signin {
+  text-align: center;
+}
+
+.login__text {
+  font-size: 14px;
+  line-height: 17px;
+  font-weight: 400;
+  color: #8B8B8B;
+}
+
+.login__link {
+  font-size: 14px;
+  line-height: 17px;
+  font-weight: 400;
+  text-decoration: none;
+  color: #4285F4;
+}
+
+.login__error {
+  font-size: 10px;
+  line-height: 12px;
+  font-weight: 400;
+  color: #EE3465;
+}
+
+@media screen and (max-width: 1279px) {
+  .login__container {
+    padding: 232px 0;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .login__container {
+    max-width: 260px;
+    align-items: center;
+    padding: 56px 0;
+  }
+
+  .login__title {
+    margin: 50px 0 80px;
+  }
+
+  .login__form {
+    width: 100%;
+  }
+
+  .login__button {
+    font-size: 12px;
+    line-height: 15px;
+    margin-top: 247px;
+  }
+
+  .login__text {
+    font-size: 12px;
+    line-height: 15px;
+  }
+
+  .login__link {
+    font-size: 12px;
+    line-height: 15px;
+  }
+}
