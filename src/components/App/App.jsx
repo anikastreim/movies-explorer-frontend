@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Route, Routes, useNavigate, useLocation } from "react-router-dom";
+import { Route, Routes, useNavigate, useLocation, Navigate } from "react-router-dom";
 import { mainApi } from '../../utils/MainApi';
 import './App.css';
 import Main from '../Main/Main';
@@ -72,80 +72,80 @@ function App() {
     }
   }
   
-  function handleRegister({ name, email, password }) {
-    mainApi.register(name, email, password)
-      .then(() => handleUserAuthentication({ email, password }))
-      .catch((err) => {
-        console.log(err);
-      });
-  }
-
-  function handleLogin({ email, password }) {
-    handleUserAuthentication({ email, password })
-    .catch((err) => {
+  async function handleRegister({ name, email, password }) {
+    try {
+      await mainApi.register(name, email, password);
+      await handleUserAuthentication({ email, password });
+    } catch (err) {
       console.log(err);
-    });
-  }
-
-  function handleUserAuthentication({ email, password }) {
-    return mainApi.login(email, password)
-      .then((data) => {
-        if (data.token) {
-          localStorage.setItem("jwt", data.token);
-          return mainApi.checkToken(data.token);
-        }
-      })
-      .then((user) => {
-        setLoggedIn(true);
-        setCurrentUser(user);
-        navigate("/movies", { replace: true });
-      });
-  }
-
-  function handleSignOut() {
-    localStorage.clear();
-    setLoggedIn(false);
-    navigate("/", { replace: true });
-  }
-
-  function handleTokenCheck() {
-    const jwt = localStorage.getItem("jwt");
-    if (jwt) {
-      mainApi.checkToken(jwt)
-        .then((user) => {
-          setLoggedIn(true);
-          setCurrentUser(user);
-          if (currentPath !== "/") {
-            navigate(currentPath, { replace: true });
-          }
-        })
-        .catch((err) => {
-          console.log(err);
-          setLoggedIn(false);
-        });
     }
   }
   
-  function handleUpdateUser(user) {
-    mainApi.updateUserInfo(user)
-    .then((user) => {
-      setCurrentUser(user);
-    })
-    .catch((err) => {
+  async function handleLogin({ email, password }) {
+    try {
+      await handleUserAuthentication({ email, password });
+    } catch (err) {
       console.log(err);
-    });
+    }
+  }
+  
+  async function handleUserAuthentication({ email, password }) {
+    try {
+      const data = await mainApi.login(email, password);
+      if (data.token) {
+        localStorage.setItem('jwt', data.token);
+        const user = await mainApi.checkToken(data.token);
+        setLoggedIn(true);
+        setCurrentUser(user);
+        navigate('/movies', { replace: true });
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  }
+  
+  async function handleSignOut() {
+    localStorage.clear();
+    setLoggedIn(false);
+    navigate('/', { replace: true });
+  }
+  
+  async function handleTokenCheck() {
+    const jwt = localStorage.getItem('jwt');
+    if (jwt) {
+      try {
+        const user = await mainApi.checkToken(jwt);
+        setLoggedIn(true);
+        setCurrentUser(user);
+        if (currentPath !== '/') {
+          navigate(currentPath, { replace: true });
+        }
+      } catch (err) {
+        console.log(err);
+        setLoggedIn(false);
+      }
+    }
+  }
+  
+  async function handleUpdateUser(user) {
+    try {
+      const updatedUser = await mainApi.updateUserInfo(user);
+      setCurrentUser(updatedUser);
+    } catch (err) {
+      console.log(err);
+    }
   }
 
   return (
     <CurrentUserContext.Provider value={currentUser}>
       <Routes>
-        <Route path="/" element={<Main loggedIn={loggedIn} />} />
-        <Route path="/signup" element={<Register loggedIn={loggedIn} handleRegister={handleRegister} />} />
-        <Route path="/signin" element={<Login loggedIn={loggedIn} handleLogin={handleLogin} />} />
-        <Route path="/profile" element={<ProtectedRoute loggedIn={loggedIn} onSignOut={handleSignOut} element={Profile} onSubmit={handleUpdateUser} />} />
-        <Route path="/movies" element={<ProtectedRoute loggedIn={loggedIn} element={Movies} savedMovies={savedMovies} onSaveMovie={handleSaveMovie} onDeleteMovie={handleDeleteMovie} />} />
-        <Route path="/saved-movies" element={<ProtectedRoute loggedIn={loggedIn} element={SavedMovies} savedMovies={savedMovies} onDeleteMovie={handleDeleteMovie} />} />
-        <Route path="*" element={<PageNotFound />} />
+        <Route path='/' element={<Main loggedIn={loggedIn} />} />
+        <Route path='/signup' element={loggedIn ? (<Navigate to='/' replace />) : (<Register handleRegister={handleRegister} />)} />
+        <Route path='/signin' element={loggedIn ? (<Navigate to='/' replace />) : (<Login handleLogin={handleLogin} />)} />
+        <Route path='/profile' element={<ProtectedRoute loggedIn={loggedIn} onSignOut={handleSignOut} element={Profile} onSubmit={handleUpdateUser} />} />
+        <Route path='/movies' element={<ProtectedRoute loggedIn={loggedIn} element={Movies} savedMovies={savedMovies} onSaveMovie={handleSaveMovie} onDeleteMovie={handleDeleteMovie} />} />
+        <Route path='/saved-movies' element={<ProtectedRoute loggedIn={loggedIn} element={SavedMovies} savedMovies={savedMovies} onDeleteMovie={handleDeleteMovie} />} />
+        <Route path='*' element={<PageNotFound />} />
       </Routes>
     </CurrentUserContext.Provider>
   )

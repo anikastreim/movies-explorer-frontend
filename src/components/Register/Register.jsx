@@ -12,9 +12,9 @@ function Register({ handleRegister }) {
     setErrorMessage('');
   }
 
-  function onRegister(e) {
+  async function onRegister(e) {
     e.preventDefault();
-    const success = handleRegister(values);
+    const success = await handleRegister(values);
     if (success) {
       setErrorMessage('');
     } else {
@@ -36,7 +36,7 @@ function Register({ handleRegister }) {
             </label>
             <label className='register__label'>
               E-mail
-              <input onChange={handleChange} onFocus={handleInputFocus} value={values.email} required type='email' name='email' placeholder='Email' className='register__input' />
+              <input onChange={handleChange} onFocus={handleInputFocus} value={values.email} pattern='^[^\s@]+@([^\s@.,]+\.)+[^\s@.,]{2,}$' required type='email' name='email' placeholder='Email' className='register__input' />
               <span className={`register__error ${errors.email ? 'register__error_visible' : ''}`}>{errors.email}</span>
             </label>
             <label className='register__label'>

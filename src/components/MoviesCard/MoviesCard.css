@@ -95,4 +95,8 @@
     font-size: 10px;
     line-height: 12px;
   }
+
+  .movies-card__delete{
+    background-image: url('../../images/delete.svg');
+  }
 }

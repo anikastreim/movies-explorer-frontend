@@ -12,9 +12,9 @@ function Login({ handleLogin }) {
     setErrorMessage('');
   }
 
-  function onLogin(e) {
+  async function onLogin(e) {
     e.preventDefault();
-    const success = handleLogin(values);
+    const success = await handleLogin(values);
     if (success) {
       setErrorMessage('');
     } else {

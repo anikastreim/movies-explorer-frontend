@@ -45,7 +45,7 @@ function Movies({  onDeleteMovie, onSaveMovie, savedMovies, loggedIn }) {
 
   function handleFilterMovies(movies, movieSearch) {
     const filteredCardsArray = movies.filter(movie => {
-      return movie.nameEN.toLowerCase().includes(movieSearch.toLowerCase()) || movie.nameRU.toLowerCase().includes(movieSearch.toLowerCase())
+      return (movie.nameEN.toLowerCase().includes(movieSearch.toLowerCase()) || movie.nameRU.toLowerCase().includes(movieSearch.toLowerCase()))
         && (isShortMovie ? movie.duration < 41 : movie.duration > 0);
     });
     localStorage.setItem('filteredMovies', JSON.stringify(filteredCardsArray));
@@ -56,9 +56,11 @@ function Movies({  onDeleteMovie, onSaveMovie, savedMovies, loggedIn }) {
     setIsLoading(true);
     setSearched(true);
     try {
-      const movies = await moviesApi.getInitialMovies();
-      setMovies(movies);
-      localStorage.setItem("allMovies", JSON.stringify(movies));
+      if (movies.length === 0) {
+        const movies = await moviesApi.getInitialMovies();
+        setMovies(movies);
+        localStorage.setItem('allMovies', JSON.stringify(movies));
+      }
       handleFilterMovies(movies, movieSearch);
       localStorage.setItem('searchQuery', movieSearch);
       localStorage.setItem('isShortMovie', isShortMovie);
@@ -67,7 +69,7 @@ function Movies({  onDeleteMovie, onSaveMovie, savedMovies, loggedIn }) {
     }
     setIsLoading(false);
   }
-
+  
   return (
     <>
       <Header loggedIn={loggedIn} />

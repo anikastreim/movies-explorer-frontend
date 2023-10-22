@@ -9,7 +9,7 @@ function MoviesCardList({ movies, onDeleteMovie, onSaveMovie }) {
   const isSavedMoviesPage = location.pathname === '/saved-movies';
   const { cardsPerRow, cardsPerColumn } = useMoviesList();
   const initialVisibleCards = cardsPerRow * cardsPerColumn;
-  const [visibleCards, setVisibleCards] = useState(isSavedMoviesPage ? movies.length : initialVisibleCards);
+  const [visibleCards, setVisibleCards] = useState(initialVisibleCards);
 
   useEffect(() => {
     setVisibleCards(initialVisibleCards);
@@ -19,10 +19,10 @@ function MoviesCardList({ movies, onDeleteMovie, onSaveMovie }) {
     if (isSavedMoviesPage) {
       setVisibleCards(movies.length);
     }
-  }, [movies, isSavedMoviesPage]);
+  }, [movies.length, isSavedMoviesPage, visibleCards]);
 
   function handleShowMore() {
-    if (window.innerWidth >= 320 && window.innerWidth < 768) {
+    if (window.innerWidth >= 320 && window.innerWidth < 768 && !isSavedMoviesPage) {
       setVisibleCards((prevVisibleCards) => prevVisibleCards + cardsPerColumn * 2);
     } else {
       setVisibleCards((prevVisibleCards) => prevVisibleCards + cardsPerColumn);
